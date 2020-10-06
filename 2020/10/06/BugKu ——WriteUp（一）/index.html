@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>BugKu ——WriteUp（一） | 窝窝头，一块钱四个，嘿嘿！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="【持续更新】BugKu ——WriteUp（一） BugKu ——WEB [0] 工具：  ①hackbar：web渗透的经典工具。使用说明： WEB 1、web2题目地址听说聪明的人都能找到答案 链接一打开，满屏幕的滑稽，简直是精神污染，直接F12查看页面源代码得到flag。    2、计算器 题目地址 )乍一看这多简单，直接输入结果，发现只能输1位数，F12看一下源代码。发现最大长度动了手脚，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BugKu ——WriteUp（一）">
+<meta property="og:url" content="http://yoursite.com/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="窝窝头，一块钱四个，嘿嘿！">
+<meta property="og:description" content="【持续更新】BugKu ——WriteUp（一） BugKu ——WEB [0] 工具：  ①hackbar：web渗透的经典工具。使用说明： WEB 1、web2题目地址听说聪明的人都能找到答案 链接一打开，满屏幕的滑稽，简直是精神污染，直接F12查看页面源代码得到flag。    2、计算器 题目地址 )乍一看这多简单，直接输入结果，发现只能输1位数，F12看一下源代码。发现最大长度动了手脚，">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126102417723.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126102618695.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126101019475.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126101212766.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126103207563.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126104400918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-10-06T03:57:49.121Z">
+<meta property="article:modified_time" content="2020-10-06T03:56:10.707Z">
+<meta property="article:author" content="Jia Zeyi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191126102417723.png">
+  
+    <link rel="alternate" href="/atom.xml" title="窝窝头，一块钱四个，嘿嘿！" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">窝窝头，一块钱四个，嘿嘿！</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-BugKu ——WriteUp（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2020-10-06T03:57:49.121Z" itemprop="datePublished">2020-10-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      BugKu ——WriteUp（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>【持续更新】BugKu ——WriteUp（一）</p>
+<h1 id="BugKu-——WEB"><a href="#BugKu-——WEB" class="headerlink" title="BugKu ——WEB"></a>BugKu ——WEB</h1><ul>
+<li>[0] 工具：</li>
+</ul>
+<p>①hackbar：web渗透的经典工具。<br><a href="https://blog.csdn.net/Passenger_zhang/article/details/69055754" target="_blank" rel="noopener">使用说明：</a></p>
+<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><ul>
+<li><p><strong>1、web2</strong><br><a href="http://123.206.87.240:8002/web2/" target="_blank" rel="noopener">题目地址</a><br>听说聪明的人都能找到答案</p>
+<p>链接一打开，满屏幕的滑稽，简直是精神污染，直接F12查看页面源代码得到flag。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>2、计算器</strong><br><a href="http://123.206.87.240:8002/yanzhengma/" target="_blank" rel="noopener"> 题目地址</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20191126102417723.png" alt="">)乍一看这多简单，直接输入结果，发现只能输1位数，F12看一下源代码。<img src="https://img-blog.csdnimg.cn/20191126102618695.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="">发现最大长度动了手脚，双击一下修改长度，再输入正确结果即可拿到flag。</p>
+</li>
+</ul>
+<ul>
+<li><strong>3、 WEB $GET</strong><br><a href="http://123.206.87.240:8002/get/" target="_blank" rel="noopener">题目地址</a></li>
+</ul>
+<p>这是一道 <strong>get传参</strong> 问题，阅读源代码可知：在参数 what==flag 的时候会回写flag{<strong>**</strong>}。<br><img src="https://img-blog.csdnimg.cn/20191126101019475.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在url后面加上:？what=flag即可得到flag{<strong>**</strong>}。<br><img src="https://img-blog.csdnimg.cn/20191126101212766.png" alt="在这里插入图片描述"><br><em>**注意一定要加上 ‘?’ 才可以get参数。</em></p>
+<blockquote>
+<p>相关知识：<br>    $_GET ：<br>      1、预定义的 $_GET 变量用于收集来自 method=“get” 的表单中的值。<br>      2、 从带有 GET 方法的表单发送的信息，对任何人都是可见的（会显示在浏览器的地址栏），并且对发送信息的量也有限制。!</p>
+</blockquote>
+<ul>
+<li><strong>4、WEB $POST</strong><br><a href="http://123.206.87.240:8002/post/" target="_blank" rel="noopener">题目地址</a></li>
+</ul>
+<p>阅读代码后可知是 <strong>post传参</strong> ，所以可构造一个post传参。使用hackbar。<br><img src="https://img-blog.csdnimg.cn/20191126103207563.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p> 相关知识：<br>    $_POST：<br>      1、预定义的 $_POST 变量用于收集来自 method=“post” 的表单中的值。<br>      2、从带有 POST 方法的表单发送的信息，对任何人都是不可见的（不会显示在浏览器的地址栏），并且对发送信息的量也没有限制。</p>
+</blockquote>
+<ul>
+<li><strong>6、web3</strong><br><a href="http://123.206.87.240:8002/web3/" target="_blank" rel="noopener">题目地址</a><br>flag就在这里快来找找吧</li>
+</ul>
+<p>F12查看源代码。发现有一行奇怪的代码。百度一下在线解码器，解码成功即可得到flag。<br><img src="https://img-blog.csdnimg.cn/20191126104400918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>7、域名解析</strong><br>听说把 flag.baidu.com 解析到123.206.87.240 就能拿到flag。</li>
+</ul>
+<p>问题关键在于：<strong>如何修改host文件？</strong> 【不解析将无法访问网页】<br>Host文件地址：<code>C:\Windows\System32\drivers\etc</code></p>
+<p>用 <strong>记事本</strong> 打开Host，直接在最下边按照格式添加 <strong>“ip地址 URL”</strong> 即可访问。</p>
+<p><a href="https://www.cnblogs.com/geaozhang/p/7010353.html" target="_blank" rel="noopener">相关知识：DNS域名解析的过程</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="ckfxfnvrr0001v0ujaoq56eto" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%89%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          BugKu ——WriteUp（三）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">BugKu ——WriteUp（二）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%89%EF%BC%89/">BugKu ——WriteUp（三）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%80%EF%BC%89/">BugKu ——WriteUp（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%BA%8C%EF%BC%89/">BugKu ——WriteUp（二）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/11/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/11/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jia Zeyi<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

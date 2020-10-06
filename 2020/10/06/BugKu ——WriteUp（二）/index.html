@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>BugKu ——WriteUp（二） | 窝窝头，一块钱四个，嘿嘿！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="【持续更新】BugKu ——WriteUp（二） BugKu —— MISC [0]工具  ①Winhex：图片隐写工具，可通过搜索“ctf”“CTF”“key”“flag”等关键字得到flag。②在线工具HtmlEncode&#x2F;BASE64转换：注意源代码里奇怪的字符串，可以尝试解码（分清类型）。③Binwalk：可查看多重文件。使用说明④VMware（kali_Linux）：虚拟机，方便解压。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BugKu ——WriteUp（二）">
+<meta property="og:url" content="http://yoursite.com/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
+<meta property="og:site_name" content="窝窝头，一块钱四个，嘿嘿！">
+<meta property="og:description" content="【持续更新】BugKu ——WriteUp（二） BugKu —— MISC [0]工具  ①Winhex：图片隐写工具，可通过搜索“ctf”“CTF”“key”“flag”等关键字得到flag。②在线工具HtmlEncode&#x2F;BASE64转换：注意源代码里奇怪的字符串，可以尝试解码（分清类型）。③Binwalk：可查看多重文件。使用说明④VMware（kali_Linux）：虚拟机，方便解压。">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126105037786.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126105218993.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019112610540741.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126105420346.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126105436784.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126105457489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126105510487.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126105521818.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191126105643793.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-10-06T03:57:49.118Z">
+<meta property="article:modified_time" content="2020-10-06T03:56:18.865Z">
+<meta property="article:author" content="Jia Zeyi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191126105037786.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="窝窝头，一块钱四个，嘿嘿！" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">窝窝头，一块钱四个，嘿嘿！</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-BugKu ——WriteUp（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+  <time datetime="2020-10-06T03:57:49.118Z" itemprop="datePublished">2020-10-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      BugKu ——WriteUp（二）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>【持续更新】BugKu ——WriteUp（二）</p>
+<h2 id="BugKu-——-MISC"><a href="#BugKu-——-MISC" class="headerlink" title="BugKu —— MISC"></a>BugKu —— MISC</h2><ul>
+<li>[0]工具</li>
+</ul>
+<p>①Winhex：图片隐写工具，可通过搜索“ctf”“CTF”“key”“flag”等关键字得到flag。<br>②在线工具HtmlEncode/BASE64转换：注意源代码里奇怪的字符串，可以尝试解码（分清类型）。<br>③Binwalk：可查看多重文件。<a href="https://blog.csdn.net/wxh0000mm/article/details/85683661" target="_blank" rel="noopener">使用说明</a><br>④VMware（kali_Linux）：虚拟机，方便解压。</p>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><ul>
+<li><strong>1、签到题</strong><br>关注微信公众号：Bugku<br>即可获取flag<br>下面也有二维码</li>
+</ul>
+<p> 这题没什么好说的，扫码关注公众号即可得到flag。</p>
+<ul>
+<li><strong>2、这是一张单纯的图片</strong><br>FLAG在哪里？？</li>
+</ul>
+<p>把图片放到winhex，拉到最后一行可以看到如下奇怪的编码：<img src="https://img-blog.csdnimg.cn/20191126105037786.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">看类型是html编码，通过在线解码器转换一下即可得到flag。</p>
+<ul>
+<li><strong>3、隐写</strong></li>
+</ul>
+<p>可以正常打开图片，鼠标右键查看一下图片的属性。<br>猜测可能是照片的宽和高信息被改了，放到 winhex 中尝试改宽高信息后发现是高被改了，将高修改为和宽一致即可得到flag。<br><img src="https://img-blog.csdnimg.cn/20191126105218993.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>5、眼见非实（ISCCCTF）</strong></li>
+</ul>
+<p>下载得到的是一个文件的格式，放到winhex中，发现有50 4B 03 04，这是压缩文件的头，而且发现还有 .docx 格式的文件，应该压缩包里有一个文档，改文件后缀为 .zip ，解压得到文档-眼见非实.docx。<br><img src="https://img-blog.csdnimg.cn/2019112610540741.png" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20191126105420346.png" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20191126105436784.png" alt="在这里插入图片描述"><br>但是该文档打开后是乱码，再次放在winhex中查看，发现还是 .zip 的格式。<img src="https://img-blog.csdnimg.cn/20191126105457489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">那就再次改后缀为 .zip，再次解压，得到一个文件夹。<img src="https://img-blog.csdnimg.cn/20191126105510487.png" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20191126105521818.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)然后在word-&gt;document.xml中找到了flag。<img src="https://img-blog.csdnimg.cn/20191126105643793.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>8、猜</strong><br><a href="http://123.206.87.240:8002/misc/cai/QQ20170221-132626.png" target="_blank" rel="noopener">题目地址</a><br>flag格式key{某人名字全拼}</li>
+</ul>
+<p>这题竟然真的盲猜，可以百度识图，我猜是***~<br>*注意flag格式：key{某人名字全拼}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%BA%8C%EF%BC%89/" data-id="ckfxfnvrs0002v0uj28hq6ch9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          BugKu ——WriteUp（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/11/test/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">test</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%89%EF%BC%89/">BugKu ——WriteUp（三）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%80%EF%BC%89/">BugKu ——WriteUp（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%BA%8C%EF%BC%89/">BugKu ——WriteUp（二）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/11/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/11/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jia Zeyi<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

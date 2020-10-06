@@ -65,6 +65,204 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-BugKu ——WriteUp（三）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%89%EF%BC%89/" class="article-date">
+  <time datetime="2020-10-06T03:57:49.124Z" itemprop="datePublished">2020-10-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%89%EF%BC%89/">BugKu ——WriteUp（三）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>【持续更新】BugKu ——WriteUp（三）</p>
+<h1 id="BugKu-——MISC"><a href="#BugKu-——MISC" class="headerlink" title="BugKu ——MISC"></a>BugKu ——MISC</h1><p> [0] 工具：</p>
+<p>①Winhex：图片隐写工具，可通过搜索“ctf”“CTF”“key”“flag”等关键字得到flag。<br>②在线工具HtmlEncode/BASE64转换：注意源代码里奇怪的字符串，可以尝试解码（分清类型）。<br>③Binwalk：可查看多重文件。<a href="https://blog.csdn.net/wxh0000mm/article/details/85683661" target="_blank" rel="noopener">使用说明</a><br>④VMware（kali_Linux）：虚拟机，方便解压、写一写脚本。</p>
+<ul>
+<li><strong>11、多种方法解决</strong><br>在做题过程中你会得到一个二维码图片</li>
+</ul>
+<p>用winhex打开显示的是base64码，联想该题的提示：在做题过程中你会得到一个二维码图片，通过在线解码器将base64码转成图片。扫一下码就可以得到flag。<br><img src="https://img-blog.csdnimg.cn/20191126195435951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20191126200006462.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><p><strong>12、闪得好快</strong><br>这是二维码吗？嗯。。。是二维码了，我靠，闪的好快。。。</p>
+<p>看格式是gif图片，打开后发现这个二维码在不停的闪，无法正确扫码。利用PS工具，将gif文件一帧一帧的查看并扫描，拼接扫描信息，拿到flag。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>13、come_game</strong><br>听说游戏通关就有flag。</p>
+<p>总觉得不可信，先玩一把试试，打开竟然是噩梦游戏I wanna，我这么菜肯定玩不了通关。然后发现桌面上多了三个文件，中间那个叫<code>save1</code>，猜测可能是保存游戏数据的。用notepad++、vc6.0、java、记事本等打开都是乱码，最后一试：winhex，就决定是你了！<br><img src="https://img-blog.csdnimg.cn/20191126204850323.png" alt="在这里插入图片描述"><br>打开发现只有一个数字。猜测可能是记录关卡进度的。改成较大数字试试。<img src="https://img-blog.csdnimg.cn/20191126205059172.png" alt="在这里插入图片描述">再打开.exe就可以看到flag了。<br>注意直接提交会被提示错误，这里没有提示格式，其实格式是<code>SYC{*******}</code>，别问我怎么知道，我也是看大佬解的orz…</p>
+</li>
+<li><p><strong>15、linux</strong><br>linux基础问题</p>
+</li>
+</ul>
+<p>既然题目叫linux，不妨把它放在虚拟机下试试。<br>题目打开是个 <code>tar.gz</code> 文件，放在linux下解压。</p>
+<p> *这里插播广告一则，<a href="https://blog.csdn.net/z806899669/article/details/99168443" target="_blank" rel="noopener">关于在VMware怎么安装kali的教程</a></p>
+<p> *另外，<a href="https://blog.csdn.net/happysunshineguy/article/details/77158993" target="_blank" rel="noopener">怎么在虚拟机和本机之间互传文件</a><br><img src="https://img-blog.csdnimg.cn/20191127172341939.png" alt="在这里插入图片描述"><br>直接把包拖到虚拟机里去。解压得到了文件夹里面是 flag。但是不知道文件格式，无法正常打开。<img src="https://img-blog.csdnimg.cn/20191127180806422.png" alt="在这里插入图片描述"><br>选中test文件，右键鼠标用终端<code>terminal</code>打开。<br><img src="https://img-blog.csdnimg.cn/20191128161152810.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>输入 <code>vi flag</code>，进入编辑文件。<img src="https://img-blog.csdnimg.cn/20191128161244303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)一点点往下浏览，查找有无flag，提示：全屏更好找。<img src="https://img-blog.csdnimg.cn/20191128161045373.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>16、隐写3</strong></li>
+</ul>
+<p>图片正常，可以直接打开，但总觉得图片太矮了。思考图片隐写相关类型，可能是高度异常，并查看该图片属性，该图可能被截取了下半部分。开始尝试用winhex修复JPG文件的原始高和宽。<br><img src="https://img-blog.csdnimg.cn/2019112816262590.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)如下图黄色位置代表宽，选中最后两位修改数值：鼠标右键——编辑——填充文件，直接将图片大小修改为“FF”（最大），点击保存，再打开就可以看到图片最下方的flag信息。<img src="https://img-blog.csdnimg.cn/20191128163320313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20191128163100482.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%89%EF%BC%89/" data-id="ckfxfnvri0000v0uj94zn7trd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-BugKu ——WriteUp（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2020-10-06T03:57:49.121Z" itemprop="datePublished">2020-10-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%80%EF%BC%89/">BugKu ——WriteUp（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>【持续更新】BugKu ——WriteUp（一）</p>
+<h1 id="BugKu-——WEB"><a href="#BugKu-——WEB" class="headerlink" title="BugKu ——WEB"></a>BugKu ——WEB</h1><ul>
+<li>[0] 工具：</li>
+</ul>
+<p>①hackbar：web渗透的经典工具。<br><a href="https://blog.csdn.net/Passenger_zhang/article/details/69055754" target="_blank" rel="noopener">使用说明：</a></p>
+<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><ul>
+<li><p><strong>1、web2</strong><br><a href="http://123.206.87.240:8002/web2/" target="_blank" rel="noopener">题目地址</a><br>听说聪明的人都能找到答案</p>
+<p>链接一打开，满屏幕的滑稽，简直是精神污染，直接F12查看页面源代码得到flag。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>2、计算器</strong><br><a href="http://123.206.87.240:8002/yanzhengma/" target="_blank" rel="noopener"> 题目地址</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20191126102417723.png" alt="">)乍一看这多简单，直接输入结果，发现只能输1位数，F12看一下源代码。<img src="https://img-blog.csdnimg.cn/20191126102618695.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="">发现最大长度动了手脚，双击一下修改长度，再输入正确结果即可拿到flag。</p>
+</li>
+</ul>
+<ul>
+<li><strong>3、 WEB $GET</strong><br><a href="http://123.206.87.240:8002/get/" target="_blank" rel="noopener">题目地址</a></li>
+</ul>
+<p>这是一道 <strong>get传参</strong> 问题，阅读源代码可知：在参数 what==flag 的时候会回写flag{<strong>**</strong>}。<br><img src="https://img-blog.csdnimg.cn/20191126101019475.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在url后面加上:？what=flag即可得到flag{<strong>**</strong>}。<br><img src="https://img-blog.csdnimg.cn/20191126101212766.png" alt="在这里插入图片描述"><br><em>**注意一定要加上 ‘?’ 才可以get参数。</em></p>
+<blockquote>
+<p>相关知识：<br>    $_GET ：<br>      1、预定义的 $_GET 变量用于收集来自 method=“get” 的表单中的值。<br>      2、 从带有 GET 方法的表单发送的信息，对任何人都是可见的（会显示在浏览器的地址栏），并且对发送信息的量也有限制。!</p>
+</blockquote>
+<ul>
+<li><strong>4、WEB $POST</strong><br><a href="http://123.206.87.240:8002/post/" target="_blank" rel="noopener">题目地址</a></li>
+</ul>
+<p>阅读代码后可知是 <strong>post传参</strong> ，所以可构造一个post传参。使用hackbar。<br><img src="https://img-blog.csdnimg.cn/20191126103207563.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p> 相关知识：<br>    $_POST：<br>      1、预定义的 $_POST 变量用于收集来自 method=“post” 的表单中的值。<br>      2、从带有 POST 方法的表单发送的信息，对任何人都是不可见的（不会显示在浏览器的地址栏），并且对发送信息的量也没有限制。</p>
+</blockquote>
+<ul>
+<li><strong>6、web3</strong><br><a href="http://123.206.87.240:8002/web3/" target="_blank" rel="noopener">题目地址</a><br>flag就在这里快来找找吧</li>
+</ul>
+<p>F12查看源代码。发现有一行奇怪的代码。百度一下在线解码器，解码成功即可得到flag。<br><img src="https://img-blog.csdnimg.cn/20191126104400918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>7、域名解析</strong><br>听说把 flag.baidu.com 解析到123.206.87.240 就能拿到flag。</li>
+</ul>
+<p>问题关键在于：<strong>如何修改host文件？</strong> 【不解析将无法访问网页】<br>Host文件地址：<code>C:\Windows\System32\drivers\etc</code></p>
+<p>用 <strong>记事本</strong> 打开Host，直接在最下边按照格式添加 <strong>“ip地址 URL”</strong> 即可访问。</p>
+<p><a href="https://www.cnblogs.com/geaozhang/p/7010353.html" target="_blank" rel="noopener">相关知识：DNS域名解析的过程</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="ckfxfnvrr0001v0ujaoq56eto" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-BugKu ——WriteUp（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+  <time datetime="2020-10-06T03:57:49.118Z" itemprop="datePublished">2020-10-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%BA%8C%EF%BC%89/">BugKu ——WriteUp（二）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>【持续更新】BugKu ——WriteUp（二）</p>
+<h2 id="BugKu-——-MISC"><a href="#BugKu-——-MISC" class="headerlink" title="BugKu —— MISC"></a>BugKu —— MISC</h2><ul>
+<li>[0]工具</li>
+</ul>
+<p>①Winhex：图片隐写工具，可通过搜索“ctf”“CTF”“key”“flag”等关键字得到flag。<br>②在线工具HtmlEncode/BASE64转换：注意源代码里奇怪的字符串，可以尝试解码（分清类型）。<br>③Binwalk：可查看多重文件。<a href="https://blog.csdn.net/wxh0000mm/article/details/85683661" target="_blank" rel="noopener">使用说明</a><br>④VMware（kali_Linux）：虚拟机，方便解压。</p>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><ul>
+<li><strong>1、签到题</strong><br>关注微信公众号：Bugku<br>即可获取flag<br>下面也有二维码</li>
+</ul>
+<p> 这题没什么好说的，扫码关注公众号即可得到flag。</p>
+<ul>
+<li><strong>2、这是一张单纯的图片</strong><br>FLAG在哪里？？</li>
+</ul>
+<p>把图片放到winhex，拉到最后一行可以看到如下奇怪的编码：<img src="https://img-blog.csdnimg.cn/20191126105037786.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">看类型是html编码，通过在线解码器转换一下即可得到flag。</p>
+<ul>
+<li><strong>3、隐写</strong></li>
+</ul>
+<p>可以正常打开图片，鼠标右键查看一下图片的属性。<br>猜测可能是照片的宽和高信息被改了，放到 winhex 中尝试改宽高信息后发现是高被改了，将高修改为和宽一致即可得到flag。<br><img src="https://img-blog.csdnimg.cn/20191126105218993.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>5、眼见非实（ISCCCTF）</strong></li>
+</ul>
+<p>下载得到的是一个文件的格式，放到winhex中，发现有50 4B 03 04，这是压缩文件的头，而且发现还有 .docx 格式的文件，应该压缩包里有一个文档，改文件后缀为 .zip ，解压得到文档-眼见非实.docx。<br><img src="https://img-blog.csdnimg.cn/2019112610540741.png" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20191126105420346.png" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20191126105436784.png" alt="在这里插入图片描述"><br>但是该文档打开后是乱码，再次放在winhex中查看，发现还是 .zip 的格式。<img src="https://img-blog.csdnimg.cn/20191126105457489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">那就再次改后缀为 .zip，再次解压，得到一个文件夹。<img src="https://img-blog.csdnimg.cn/20191126105510487.png" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20191126105521818.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)然后在word-&gt;document.xml中找到了flag。<img src="https://img-blog.csdnimg.cn/20191126105643793.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFoYTIzMzMzMA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li><strong>8、猜</strong><br><a href="http://123.206.87.240:8002/misc/cai/QQ20170221-132626.png" target="_blank" rel="noopener">题目地址</a><br>flag格式key{某人名字全拼}</li>
+</ul>
+<p>这题竟然真的盲猜，可以百度识图，我猜是***~<br>*注意flag格式：key{某人名字全拼}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%BA%8C%EF%BC%89/" data-id="ckfxfnvrs0002v0uj28hq6ch9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/11/test/" class="article-date">
@@ -169,7 +367,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -180,6 +378,18 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%89%EF%BC%89/">BugKu ——WriteUp（三）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%B8%80%EF%BC%89/">BugKu ——WriteUp（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/06/BugKu%20%E2%80%94%E2%80%94WriteUp%EF%BC%88%E4%BA%8C%EF%BC%89/">BugKu ——WriteUp（二）</a>
+          </li>
         
           <li>
             <a href="/2020/03/11/test/">test</a>
